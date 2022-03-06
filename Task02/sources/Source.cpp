@@ -3,128 +3,154 @@
 #include "../headers/Header.h"
 
 /// <summary>
-/// claculates the area of the rectangle using sides as input
+/// claculates rectangle area if the area is not negative
 /// </summary>
-/// <param name="a">side a of the rectangle</param>
-/// <param name="b">side b of the rectangle</param>
-/// <returns>the area of the rectangle</returns>
-float NameSpace::recArea(float a, float b) {
-	return a * b;
+/// <param name="a">one of the sides of the rectangle</param>
+/// <param name="b">the other side of the rectangle</param>
+/// <returns>the area of the rectangles if it's not negative, else return -1</returns>
+float NameSpace::recArea(float a, float b) 
+{
+	float area = a * b;
+	if (area >= 0) 
+		return area;
+	else {
+		std::cout << "the area can not be less then zero ( current answer is " << area << " )" << std::endl;
+		return -1;
+	}
 }
 
-
 /// <summary>
-/// caculates the area of rectangle using rectangle struct
+/// calculates the area of the rectangle if it has not been calculated
 /// </summary>
-/// <param name="r">rectangle struct</param>
-/// <returns>the area of rectangle</returns>
+/// <param name="r">reference to the rectangle struct</param>
+/// <returns>the area member of the referenced reactangle</returns>
 float NameSpace::recArea(NameSpace::Rectangle &r) {
-	float area = recArea(r.sideA, r.sideB);
-	if (area >= 0) {
-		r.checkArea = true;
-		return area;
+	if (r.checkArea) {
+		return r.area;
 	}
 	else {
-		std::cout << "area can not be less than 0" << std::endl;
-		r.checkArea = false;
+		float area = NameSpace::recArea(r.sideA, r.sideB);
+		if (area != -1) {
+			r.area = area;
+			r.checkArea = true;
+			return r.area;
+		}		
 	}
-
-	return 0;
-	//return NameSpace::recArea(r.sideA, r.sideB);
 }
 
 
 /// <summary>
-/// claculates the area of the circle using radius as input
+/// claculates circle area if the area is not negative
 /// </summary>
 /// <param name="r">radius of the rectangle</param>
-/// <returns>the area of the circle</returns>
+/// <returns>returns the area of the circle if it's not negative, else return -1</returns>
 float NameSpace::cirArea(float r) {
-	return 3.14 * (r * r);
-}
 
-
-/// <summary>
-/// claculates the area of the circle using circle struct
-/// </summary>
-/// <param name="c">circle struct</param>
-/// <returns></returns>
-float NameSpace::cirArea(NameSpace::Circle &c) {
-	float area = cirArea(c.radius);
-	if (area >= 0) {
-		c.checkArea = true;
+	float area = (float)3.14 * (r * r);
+	if (area >= 0) 
 		return area;
+	else {
+		std::cout << "the area can not be less then zero ( current answer is " << area << " )" << std::endl;
+		return -1;
+	}
+}
+
+
+/// <summary>
+/// calculates the area of the circle if it has not been calculated
+/// </summary>
+/// <param name="c">reference to the circle struct</param>
+/// <returns>returns the area member of the referenced circle</returns>
+float NameSpace::cirArea(NameSpace::Circle &c) 
+{
+	if (c.checkArea) {
+		return c.area;
 	}
 	else {
-		std::cout << "area can not be less than 0" << std::endl;
-		c.checkArea = false;
+		float area = NameSpace::cirArea(c.radius);
+		if (area != -1) {
+			c.area = area;
+			c.checkArea = true;
+			return c.area;
+		}
 	}
-
-	return 0;
-	//return NameSpace::cirArea(c.radius);
 }
 
 
 /// <summary>
-/// claculates the perimiter of the rectangle using sides as input
+/// claculates rectangle parameter if the area is not negative
 /// </summary>
-/// <param name="a">side a</param>
-/// <param name="b">side b</param>
-/// <returns>the perimiter of a rectangle</returns>
-float NameSpace::recPerim(float a, float b) {
-	return 2 * (a + b);
+/// <param name="a">one of the sides of the rectangle</param>
+/// <param name="b">the other side of the rectangle</param>
+/// <returns>returns the parameter of the rectangle if it's not negative, else return -1</returns>
+float NameSpace::recParam(float a, float b) 
+{
+	float param = 2 * (a + b);
+	if (param >= 0) 
+		return param;
+	else {
+		std::cout << "the parameter can not be less then zero ( current answer is " << param << " )" << std::endl;
+		return -1;
+	}
 }
 
 
 /// <summary>
-/// claculates the perimiter of the rectangle using rectangle struct as input
+/// calculates the parameter of the rectangle if it has not been calculated
 /// </summary>
-/// <param name="r">rectangle struct</param>
-/// <returns>the perimiter of the rectangle</returns>
-float NameSpace::recPerim(NameSpace::Rectangle &r) {
-	float perimiter = recPerim(r.sideA, r.sideB);
-	if (perimiter >= 0) {
-		r.checkPerimeter = true;
-		return perimiter;
+/// <param name="r">reference to the rectangle struct</param>
+/// <returns>returns the parameter member of the referenced reactangle</returns>
+float NameSpace::recParam(NameSpace::Rectangle &r) 
+{
+	if (r.checkParameter) {
+		return r.parameter;
 	}
 	else {
-		std::cout << "perimiter can not be less than 0" << std::endl;
-		r.checkPerimeter = false;
+		float param = NameSpace::recParam(r.sideA, r.sideB);
+		if (param != -1) {
+			r.parameter = param;
+			r.checkParameter = true;
+			return r.parameter;
+		}
 	}
-
-	return 0;
-	//return NameSpace::recPerim(r.sideA, r.sideB);
 }
 
 
 /// <summary>
-/// claculates the perimiter of the circle using radius as input
+/// claculates circle parameter if the area is not negative
 /// </summary>
-/// <param name="r">the circle radius</param>
-/// <returns>the perimiter of a circle</returns>
-float NameSpace::cirPerim(float r) {
-	return 2 * 3.14 * r;
+/// <param name="r">radius of the circle</param>
+/// <returns>returns the parameter of the circle if it's not negative, else return -1</returns>
+float NameSpace::cirParam(float r) 
+{
+	float param = 2 * (float)3.14 * r;
+	if (param >= 0) 
+		return param;
+	else {
+		std::cout << "the parameter can not be less then zero ( current answer is " << param << " )" << std::endl;
+		return -1;
+	}
 }
 
 
 /// <summary>
-/// claculates the perimiter of the circle using circle struct as input
+/// calculates the parameter of the circle if it has not been calculated
 /// </summary>
-/// <param name="c">circle struct</param>
-/// <returns></returns>
-float NameSpace::cirPerim(NameSpace::Circle &c) {
-	float perimiter = cirPerim(c.radius);
-	if (perimiter >= 0) {
-		c.checkPerimeter = true;
-		return perimiter;
+/// <param name="c">reference to the circle struct</param>
+/// <returns>returns the parameter member of the referenced circle</returns>
+float NameSpace::cirParam(NameSpace::Circle &c) 
+{
+	if (c.checkParameter) {
+		return c.parameter;
 	}
 	else {
-		std::cout << "perimiter can not be less than 0" << std::endl;
-		c.checkPerimeter = false;
+		float param = NameSpace::cirParam(c.radius);
+		if (param != -1) {
+			c.parameter = param;
+			c.checkParameter = true;
+			return c.parameter;
+		}
 	}
-
-	return 0;
-	//return NameSpace::cirPerim(c.radius);
 }
 
 
@@ -133,15 +159,18 @@ float NameSpace::cirPerim(NameSpace::Circle &c) {
 /// </summary>
 /// <param name="r">rectangle struct</param>
 /// <param name="m">multiplication constant</param>
-void NameSpace::resize(NameSpace::Rectangle &r, int m = 2) {
+void NameSpace::resize(NameSpace::Rectangle &r, int m) 
+{
 	if (m < 0) {
-		std::cout << "the resize value cant be less than 0" << std::endl;
+		std::cout << "the resize value cant be less than 0 (negative)" << std::endl;
 	}
 	else {
 		r.sideA *= m;
 		r.sideB *= m;
+		r.checkArea = false;
+		r.checkParameter = false;
 		r.area = NameSpace::recArea(r);
-		r.perimeter = NameSpace::recPerim(r);
+		r.parameter = NameSpace::recParam(r);
 	}
 }
 
@@ -151,14 +180,17 @@ void NameSpace::resize(NameSpace::Rectangle &r, int m = 2) {
 /// </summary>
 /// <param name="r">circle struct</param>
 /// <param name="m">multiplication constant</param>
-void NameSpace::resize(NameSpace::Circle &c, int m = 2) {
+void NameSpace::resize(NameSpace::Circle &c, int m) 
+{
 	if (m < 0) {
-		std::cout << "the resize value cant be less than 0" << std::endl;
+		std::cout << "the resize value cant be less than 0 (negative)" << std::endl;
 	}
 	else {
 		c.radius *= m;
+		c.checkArea = false;
+		c.checkParameter = false;
 		c.area = NameSpace::cirArea(c);
-		c.perimeter = NameSpace::cirPerim(c);
+		c.parameter = NameSpace::cirParam(c);
 	}
 }
 
@@ -167,11 +199,12 @@ void NameSpace::resize(NameSpace::Circle &c, int m = 2) {
 /// prints the information of the rectangle
 /// </summary>
 /// <param name="r">rectangle struct</param>
-void NameSpace::printOut(NameSpace::Rectangle r) {
+void NameSpace::printOut(NameSpace::Rectangle r) 
+{
 	std::cout << "rectangle side a: " << r.sideA << std::endl;
 	std::cout << "rectangle side b: " << r.sideB << std::endl;
 	std::cout << "rectangle area: " << r.area << std::endl;
-	std::cout << "rectangle perimiter: " << r.perimeter << std::endl;
+	std::cout << "rectangle parameter: " << r.parameter << std::endl;
 }
 
 
@@ -179,8 +212,9 @@ void NameSpace::printOut(NameSpace::Rectangle r) {
 /// prints the information of the circle
 /// </summary>
 /// <param name="c">circle struct</param>
-void NameSpace::printOut(NameSpace::Circle c) {
+void NameSpace::printOut(NameSpace::Circle c) 
+{
 	std::cout << "circle radius: " << c.radius << std::endl;
 	std::cout << "circle area: " << c.area << std::endl;
-	std::cout << "circle perimiter: " << c.perimeter << std::endl;
+	std::cout << "circle perimiter: " << c.parameter << std::endl;
 }

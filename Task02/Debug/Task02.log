@@ -1,0 +1,6 @@
+﻿  Source.cpp
+C:\Dev\Cpp\AE5PC\Task02\Task02\sources\Source.cpp(77): warning C4715: 'NameSpace::cirArea': not all control paths return a value
+C:\Dev\Cpp\AE5PC\Task02\Task02\sources\Source.cpp(39): warning C4715: 'NameSpace::recArea': not all control paths return a value
+C:\Dev\Cpp\AE5PC\Task02\Task02\sources\Source.cpp(116): warning C4715: 'NameSpace::recParam': not all control paths return a value
+C:\Dev\Cpp\AE5PC\Task02\Task02\sources\Source.cpp(154): warning C4715: 'NameSpace::cirParam': not all control paths return a value
+  Task02.vcxproj -> C:\Dev\Cpp\AE5PC\Task02\Debug\Task02.exe
